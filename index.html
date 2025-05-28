@@ -3,61 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Flores</title>
-    <link rel="stylesheet" href="style.css"> <!-- Aquí se enlaza el CSS -->
+    <!-- Título más descriptivo (considera añadir el nombre de tu tienda si aplica) -->
+    <title>Nuestro Catalogo </title>
+
+    <!-- Meta descripción: Importante para SEO -->
+    <meta name="description" content="Descubre nuestra hermosa selección de ramos de rosas, flores individuales y cajas de bombones. Perfectos para cualquier ocasión. Consulta precios y haz tu pedido.">
+
+    <!-- Favicon (¡No olvides añadirlo!) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- También puedes añadir favicons para Apple, Android, etc. -->
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> -->
+    <!-- <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"> -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"> -->
+    <!-- <link rel="manifest" href="/site.webmanifest"> -->
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Preconnect para Google Fonts (si las usas desde el CSS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Si importas Poppins aquí en vez de en el CSS: -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"> -->
+
 </head>
 <body>
-    <section class="catalog">
-        <img src="img/banner2.0.png" alt="banner" class="banner">
-        <h1>Nuestro Catálogo</h1>
-        <div class="products">
-            <div class="product">
-                <img src="img/Ramo de 3 Rosas.jpg" alt="Ramo de 3 Rosas">
-                <h3>Ramo de 3 Rosas</h3>
-                <p>Perfecta para demostrar amor.</p>
-                <p class="price">₲ 30,000</p>
-                <a href="https://wa.me/595983702570?text=Hola%2C%20quiero%20consultar%20por%20el%20ramo%20de%203%20rosas!" target="_blank">
-                    <button>Consultar</button>
-                </a>
-            </div>
-            <div class="product">
-                <img src="img/Ramo de 7 Rosas.jpg" alt="Ramo de 7 Rosas">
-                <h3>Ramo de 7 Rosas</h3>
-                <p>Brillante y alegre para cualquier ocasión.</p>
-                <p class="price">₲ 50,000</p>
-                <a href="https://wa.me/595983702570?text=Hola%2C%20quiero%20consultar%20por%20el%20ramo%20de%207%20rosas!" target="_blank">
-                    <button>Consultar</button>
-                </a>
-            </div>
-            <div class="product">
-                <img src="img/Ramo de 12  Rosas.jpg" alt="Ramo de 12 Rosas">
-                <h3>Ramo de 12 Rosas</h3>
-                <p>Elegantes y sofisticados.</p>
-                <p class="price">₲ 85,000</p>
-                <a href="https://wa.me/595983702570?text=Hola%2C%20quiero%20consultar%20por%20el%20ramo%20de%2012%20rosas!" target="_blank">
-                    <button>Consultar</button>
-                </a>
-            </div>
-            <div class="product">
-                <img src="img/Rosa Individual.jpg" alt="Rosa Individual">
-                <h3>Rosa Individual</h3>
-                <p>Exóticas y llenas de misterio.</p>
-                <p class="price">₲ 15,000</p>
-                <a href="https://wa.me/595983702570?text=Hola%2C%20quiero%20consultar%20por%20la%20rosa%20individual!" target="_blank">
-                    <button>Consultar</button>
-                </a>
-            </div>
-            <div class="product">
-                <img src="img/BOX DE BOMBONES.jpg" alt="BOX DE BOMBONES">
-                <h3>BOX DE BOMBONES</h3>
-                <p>Pureza y tranquilidad.</p>
-                <p class="price">₲ 100,000</p>
-                <a href="https://wa.me/595983702570?text=Hola%2C%20quiero%20consultar%20por%20el%20BOX%20de%20bombones!" target="_blank">
-                    <button>Consultar</button>
-                </a>
-            </div>
+
+    <!-- HEADER: Contenedor para elementos introductorios o de navegación -->
+    <header class="site-header">
+        <!-- Aquí podría ir tu logo, un menú de navegación principal si la web crece, etc. -->
+        <!-- Por ahora, podemos poner el banner aquí si es el elemento principal de cabecera -->
+        <img src="img/banner2.0.png" alt="Promoción especial en ramos de flores" class="banner">
+        <!-- El alt del banner debería ser más descriptivo del contenido visual o propósito del banner -->
+    </header>
+
+    <!-- MAIN: Contenido principal de la página -->
+    <main>
+        <!-- SECTION para el catálogo, con un encabezado más específico si es posible -->
+        <section class="catalog" aria-labelledby="catalog-title">
+            <div class="container"> <!-- Opcional: Si usas la clase container del CSS mejorado -->
+                <h1 id="catalog-title">Nuestro Catálogo de Flores y Regalos</h1>
+                
+                <!-- PRODUCTS GRID: Usamos una lista <ul> para la semántica de una colección de ítems -->
+                <ul class="products">
+                    <!-- Cada producto es un <li> y un <article> ya que es una pieza de contenido auto-contenida -->
+                    <li class="product">
+                        <article>
+                            <figure class="product__image-container">
+                                <img src="img/Ramo de 3 Rosas.jpg" alt="Ramo de tres rosas rojas elegantemente arregladas.">
+                            </figure>
+                            <h2 class="product__title">Ramo de 3 Rosas</h2> <!-- Cambiado de H3 a H2 para jerarquía con H1 -->
+                            <p class="product__description">Perfecto para demostrar un gesto de amor sincero y delicado.</p>
+                            <p class="price">₲ 30,000</p>
+                            <!-- El botón ahora es un enlace estilizado, lo cual es más semántico -->
+                            <a href="https://wa.me/595983702570?text=Hola%2C%20quiero%20consultar%20por%20el%20ramo%20de%203%20rosas!" 
+                               target="_blank" rel="noopener noreferrer" class="button product__cta">
+                                Consultar por WhatsApp
+                            </a>
+                        </article>
+                    </li>
+
+                    <li class="product">
+                        <article>
+                            <figure class="product__image-container">
+                                <img src="img/Ramo de 7 Rosas.jpg" alt="Colorido ramo de siete rosas variadas, ideal para alegrar el día.">
+                            </figure>
+                            <h2 class="product__title">Ramo de 7 Rosas</h2>
+                            <p class="product__description">Brillante y alegre para cualquier ocasión especial o para sorprender.</p>
+                            <p class="price">₲ 50,000</p>
+                            <a href="https://wa.me/595983702570?text=Hola%2C%20quiero%20consultar%20por%20el%20ramo%20de%207%20rosas!" 
+                               target="_blank" rel="noopener noreferrer" class="button product__cta">
+                                Consultar por WhatsApp
+                            </a>
+                        </article>
+                    </li>
+
+                    <li class="product">
+                        <article>
+                            <figure class="product__image-container">
+                                <img src="img/Ramo de 12  Rosas.jpg" alt="Impresionante ramo de doce rosas, símbolo de amor y admiración.">
+                            </figure>
+                            <h2 class="product__title">Ramo de 12 Rosas</h2>
+                            <p class="product__description">Elegancia y sofisticación en un arreglo floral clásico e impactante.</p>
+                            <p class="price">₲ 85,000</p>
+                            <a href="https://wa.me/595983702570?text=Hola%2C%20quiero%20consultar%20por%20el%20ramo%20de%2012%20rosas!" 
+                               target="_blank" rel="noopener noreferrer" class="button product__cta">
+                                Consultar por WhatsApp
+                            </a>
+                        </article>
+                    </li>
+
+                    <li class="product">
+                        <article>
+                            <figure class="product__image-container">
+                                <img src="img/Rosa Individual.jpg" alt="Una delicada rosa individual, perfecta como un detalle especial.">
+                            </figure>
+                            <h2 class="product__title">Rosa Individual</h2>
+                            <p class="product__description">Un detalle sutil y encantador, lleno de significado.</p>
+                            <p class="price">₲ 15,000</p>
+                            <a href="https://wa.me/595983702570?text=Hola%2C%20quiero%20consultar%20por%20la%20rosa%20individual!" 
+                               target="_blank" rel="noopener noreferrer" class="button product__cta">
+                                Consultar por WhatsApp
+                            </a>
+                        </article>
+                    </li>
+
+                    <li class="product">
+                        <article>
+                            <figure class="product__image-container">
+                                <img src="img/BOX DE BOMBONES.jpg" alt="Elegante caja de bombones surtidos, ideal para regalar.">
+                            </figure>
+                            <h2 class="product__title">Box de Bombones</h2>
+                            <p class="product__description">Una dulce tentación para complementar tus flores o como regalo único.</p>
+                            <p class="price">₲ 100,000</p>
+                            <a href="https://wa.me/595983702570?text=Hola%2C%20quiero%20consultar%20por%20el%20BOX%20de%20bombones!" 
+                               target="_blank" rel="noopener noreferrer" class="button product__cta">
+                                Consultar por WhatsApp
+                            </a>
+                        </article>
+                    </li>
+                </ul> <!-- Fin de .products -->
+            </div> <!-- Fin de .container -->
+        </section> <!-- Fin de .catalog -->
+    </main>
+
+    <!-- FOOTER: Contenido al pie de página, como copyright, enlaces secundarios, etc. -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="current-year"></span> [Nombre de tu Florería/Tienda]. Todos los derechos reservados.</p>
+            <!-- Aquí podrías añadir enlaces a redes sociales, política de privacidad, etc. -->
+            <!-- <p>Síguenos en <a href="#">Instagram</a> | <a href="#">Facebook</a></p> -->
         </div>
-    </section>
->
+    </footer>
+
+    <!-- Script para el año actual en el footer (opcional) -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
 </body>
 </html>
