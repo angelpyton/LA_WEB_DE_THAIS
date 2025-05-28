@@ -1,80 +1,215 @@
+/* === IMPORTS === */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-body {
-    background-color: #121212;
-    color: rgb(241, 15, 15);
-    font-family: 'Poppins', sans-serif;
+/* === VARIABLES CSS (CUSTOM PROPERTIES) === */
+/* Esto hace que tu CSS sea más mantenible y consistente */
+:root {
+    --font-primary: 'Poppins', sans-serif;
+
+    --color-background: #121212;
+    --color-text: #f0f0f0; /* Color de texto principal más legible sobre fondo oscuro */
+    --color-text-muted: #a0a0a0; /* Para texto secundario o menos importante */
+
+    --color-card-bg: #2a2a2a; /* Un color de tarjeta un poco más oscuro para contraste */
+    --color-primary-accent: #ce8b43; /* Tu naranja/marrón original, lo usaré de acento */
+    
+    --color-price: #e74c3c; /* Un rojo ligeramente menos saturado, más moderno */
+    --color-button-bg: #e67e22; /* Naranja para botones, armoniza con --color-primary-accent */
+    --color-button-text: #ffffff;
+    --color-button-hover-bg: #d35400; /* Naranja más oscuro para hover */
+
+    --border-radius-s: 6px;  /* Pequeño */
+    --border-radius-m: 10px; /* Mediano */
+    --border-radius-l: 15px; /* Grande */
+
+    --shadow-soft: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --shadow-medium: 0 6px 12px rgba(0, 0, 0, 0.25);
+    --shadow-product-accent: 0px 5px 15px rgba(var(--color-primary-accent-rgb, 206, 139, 67), 0.3); /* Definir --color-primary-accent-rgb si usas color-mix o manualmente */
+    /* Para --color-primary-accent-rgb (si no usas preprocesadores o color-mix): */
+    /* --color-primary-accent-rgb: 206, 139, 67; /* Corresponde a #ce8b43 */
+
+    --spacing-xs: 0.5rem;  /* 8px si 1rem = 16px */
+    --spacing-s: 1rem;    /* 16px */
+    --spacing-m: 1.5rem;  /* 24px */
+    --spacing-l: 2rem;    /* 32px */
+
+    --transition-fast: all 0.2s ease-in-out;
+    --transition-default: all 0.3s ease-in-out;
+}
+
+/* === RESET BÁSICO Y ESTILOS GLOBALES === */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Mejora el modelo de caja */
     margin: 0;
     padding: 0;
-    text-align: center;
+}
+
+html {
+    font-size: 100%; /* Para que 1rem = 16px (o el tamaño por defecto del navegador) */
+    scroll-behavior: smooth; /* Desplazamiento suave */
 }
 
 body {
-    background-image: url('img/fondo.png'); /* Asegúrate de que el nombre y la ruta sean correctos */
-    background-size: cover; /* Ajusta para que cubra toda la pantalla */
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    line-height: 1.6; /* Mejora la legibilidad del texto */
+    -webkit-font-smoothing: antialiased; /* Mejora renderizado de fuentes en Webkit */
+    -moz-osx-font-smoothing: grayscale; /* Mejora renderizado de fuentes en Firefox */
+
+    /* Imagen de fondo (combinado desde tus dos declaraciones body) */
+    background-image: url('img/fondo.png'); /* Asegúrate de que la ruta sea correcta */
+    background-size: cover;
+    background-attachment: fixed; /* Opcional: fija el fondo al hacer scroll */
     background-position: center;
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-repeat: no-repeat;
 }
 
+/* === TIPOGRAFÍA === */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600; /* Usar el peso semibold de Poppins */
+    line-height: 1.2;
+    margin-bottom: var(--spacing-s);
+}
 
+p {
+    margin-bottom: var(--spacing-s);
+}
+
+a {
+    color: var(--color-primary-accent);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+a:hover, a:focus {
+    color: var(--color-button-hover-bg); /* O un tono más claro/oscuro de --color-primary-accent */
+    text-decoration: underline;
+}
+
+/* === LAYOUT CONTAINERS === */
+.container { /* Un contenedor general para centrar contenido y dar márgenes */
+    width: 90%;
+    max-width: 1200px; /* Ajusta según necesites */
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--spacing-l) 0; /* Espaciado vertical */
+}
+
+/* === COMPONENTES === */
+
+/* --- Banner --- */
+.banner {
+    width: 100%;
+    height: 300px; /* Usar height en vez de max-height si quieres que siempre tenga esa altura */
+    object-fit: cover;
+    border-radius: var(--border-radius-m);
+    margin-bottom: var(--spacing-l); /* Usar variables de espaciado */
+    display: block; /* Para evitar espacios extra debajo si es inline */
+}
+
+/* --- Products Grid --- */
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    /* Ajustado minmax para tarjetas un poco más anchas y fluidas */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-m); /* Usar variables de espaciado */
+    padding: var(--spacing-m); /* Padding alrededor del grid */
+    /* text-align: center; No es necesario aquí si los .product ya lo tienen */
 }
 
+/* --- Product Card --- */
 .product {
-    background-color: #ce8b43;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(242, 210, 107, 0.952);
+    background-color: var(--color-card-bg);
+    padding: var(--spacing-m);
+    border-radius: var(--border-radius-m);
+    /* Sombra más sutil y con color de acento opcional */
+    box-shadow: var(--shadow-soft);
+    /* border: 1px solid #333; Opcional: un borde sutil */
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--transition-default), box-shadow var(--transition-default);
+    display: flex; /* Para mejor control del contenido interno */
+    flex-direction: column; /* Apilar elementos verticalmente */
+    justify-content: space-between; /* Para que el botón quede abajo si las descripciones varían */
 }
 
 .product:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 12px rgb(207, 158, 93);
+    transform: translateY(-6px) scale(1.02); /* Efecto un poco más pronunciado */
+    box-shadow: var(--shadow-medium);
+    /* Si quieres sombra con acento: */
+    /* box-shadow: 0px 8px 20px rgba(206, 139, 67, 0.35); */
 }
 
-.product img {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
+.product__image-container { /* Contenedor para la imagen, si necesitas más control */
+    margin-bottom: var(--spacing-s);
+    overflow: hidden; /* Para que el hover de la imagen no se salga del border-radius */
+    border-radius: var(--border-radius-s); /* Redondeo para la imagen */
 }
 
-.product img:hover {
-    transform: scale(1.1);
+.product img { /* Ahora es .product__image */
+    width: 100%; /* Para que la imagen sea responsive dentro de la tarjeta */
+    height: 200px; /* Altura fija para uniformidad, object-fit se encargará del resto */
+    object-fit: cover; /* Asegura que la imagen cubra sin deformarse */
+    display: block; /* Elimina espacio extra debajo de la imagen */
+    border-radius: var(--border-radius-s); /* Hereda o define el mismo que el contenedor */
+    transition: transform var(--transition-default), filter 0.3s ease; /* Añadido filter */
+}
+
+.product:hover img { /* Efecto en la imagen cuando se hace hover en la tarjeta */
+    transform: scale(1.05);
+    filter: brightness(1.1); /* Un ligero brillo al hacer hover */
+}
+
+.product__title { /* Asumiendo que tendrás un título para el producto */
+    font-size: 1.25rem; /* ~20px */
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+}
+
+.product__description { /* Asumiendo que tendrás una descripción */
+    font-size: 0.9rem; /* ~14px */
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-s);
+    flex-grow: 1; /* Para que ocupe el espacio disponible y empuje el precio/botón abajo */
 }
 
 .price {
-    font-size: 30px;
-    font-weight: bold;
-    color: #e40c0c;
+    font-size: 1.75rem; /* ~28px, ligeramente ajustado */
+    font-weight: 600; /* Poppins semibold */
+    color: var(--color-price);
+    margin: var(--spacing-xs) 0 var(--spacing-s); /* Espaciado arriba y abajo */
 }
 
-button {
-    background-color: #ff5555;
-    color: white;
-    padding: 12px 16px;
+/* --- Button --- */
+button, .button { /* Añadida clase .button para poder estilizar enlaces como botones */
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+    padding: var(--spacing-s) var(--spacing-m); /* Usar variables */
     border: none;
-    border-radius: 8px;
+    border-radius: var(--border-radius-s);
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: var(--font-primary);
+    font-size: 1rem; /* ~16px */
+    font-weight: 600;
+    text-transform: uppercase; /* Da un look más "profesional" a los botones */
+    letter-spacing: 0.5px;
+    text-decoration: none; /* Para la clase .button en enlaces */
+    display: inline-block; /* Para que el padding funcione correctamente en enlaces */
+    transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-button:hover {
-    background-color: #ff0000;
-    transform: scale(1.05);
+button:hover, .button:hover,
+button:focus, .button:focus { /* Añadido :focus para accesibilidad */
+    background-color: var(--color-button-hover-bg);
+    transform: translateY(-2px) scale(1.03); /* Efecto hover más dinámico */
+    box-shadow: var(--shadow-soft); /* Sombra sutil en hover/focus */
+    outline: none; /* Quitar el outline por defecto si se maneja visualmente el focus */
 }
 
-.banner {
-    width: 100%;
-    max-height: 300px; /* Ajusta la altura según lo necesites */
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 20px;
+button:active, .button:active {
+    transform: translateY(0px) scale(0.98); /* Efecto al presionar */
+    box-shadow: none;
 }
