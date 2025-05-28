@@ -2,12 +2,20 @@
 
 body {
     background-color: #121212;
-    color: white;
+    color: rgb(241, 15, 15);
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
 }
+
+body {
+    background-image: url('img/fondo.png'); /* Asegúrate de que el nombre y la ruta sean correctos */
+    background-size: cover; /* Ajusta para que cubra toda la pantalla */
+    background-position: center;
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
 
 .products {
     display: grid;
@@ -17,34 +25,34 @@ body {
 }
 
 .product {
-    background-color: #1e1e1e;
+    background-color: #ce8b43;
     padding: 15px;
     border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 4px 10px rgba(242, 210, 107, 0.952);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product:hover {
     transform: translateY(-5px);
-    box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 6px 12px rgb(207, 158, 93);
 }
 
 .product img {
-    width: 150px;
+    width: 200px;
     height: auto;
     border-radius: 10px;
     transition: transform 0.3s ease;
 }
 
 .product img:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .price {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
-    color: #ff5555;
+    color: #e40c0c;
 }
 
 button {
@@ -61,4 +69,12 @@ button {
 button:hover {
     background-color: #ff0000;
     transform: scale(1.05);
+}
+
+.banner {
+    width: 100%;
+    max-height: 300px; /* Ajusta la altura según lo necesites */
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
