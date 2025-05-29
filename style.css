@@ -6,8 +6,8 @@
 :root {
     --font-primary: 'Poppins', sans-serif;
 
-    --color-background: #121212;
-    --color-text: #f0f0f0; /* Color de texto principal más legible sobre fondo oscuro */
+    --color-background: #121111;
+    --color-text: #000000; /* Color de texto principal más legible sobre fondo oscuro */
     --color-text-muted: #a0a0a0; /* Para texto secundario o menos importante */
 
     --color-card-bg: #2a2a2a; /* Un color de tarjeta un poco más oscuro para contraste */
@@ -72,6 +72,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600; /* Usar el peso semibold de Poppins */
     line-height: 1.2;
     margin-bottom: var(--spacing-s);
+    --color-text: #ffffff; /* Color de texto para encabezados, blanco para destacar sobre fondo oscuro */
 }
 
 p {
