@@ -214,3 +214,56 @@ button:active, .button:active {
     transform: translateY(0px) scale(0.98); /* Efecto al presionar */
     box-shadow: none;
 }
+
+/* === FOOTER STYLES === */
+.site-footer {
+    background-color: var(--color-card-bg); /* Un fondo ligeramente distinto para el footer */
+    color: var(--color-text-muted); /* Texto más suave para el footer */
+    padding: var(--spacing-m) 0; /* Espaciado vertical usando tus variables */
+    text-align: center; /* Centra todo el contenido del footer */
+}
+
+.site-footer .container p {
+    margin-bottom: var(--spacing-s); /* Espacio entre párrafos dentro del footer */
+    color: #ffffff; /* Asegurar que el texto del copyright sea visible */
+}
+
+.site-footer .container p:last-child {
+    margin-bottom: 0; /* Quitar margen inferior del último párrafo (social-links) */
+}
+
+.site-footer .social-links {
+    margin-top: var(--spacing-s); /* Espacio encima del texto "Síguenos en:" */
+    font-size: 0.9em;
+    color: #ffffff; /* Color para el texto "Síguenos en:" */
+}
+
+.site-footer .social-icon {
+    display: inline-block; /* Permite aplicar transformaciones y mejor control del espaciado */
+    margin: 0 var(--spacing-xs); /* Espacio horizontal alrededor del icono */
+    transition: transform var(--transition-fast), color var(--transition-fast);
+    color: var(--color-primary-accent); /* Color inicial del icono, usando tu variable de acento */
+}
+
+.site-footer .social-icon svg {
+    width: 28px;  /* Tamaño del icono SVG */
+    height: 28px; /* Tamaño del icono SVG */
+    vertical-align: middle; /* Alinea el icono correctamente si tienes texto al lado */
+    fill: currentColor; /* El SVG heredará el color del 'a' (social-icon) */
+}
+
+.site-footer .social-icon:hover,
+.site-footer .social-icon:focus {
+    color: var(--color-button-hover-bg); /* Color al pasar el mouse, usando tu variable de hover de botón */
+    transform: scale(1.15); /* Un poco más grande al hacer hover */
+    outline: none; /* Quitar el outline por defecto en focus, ya que tenemos el cambio de color/tamaño */
+}
+
+/* Ajuste para que la etiqueta 'a' general no interfiera tanto con los iconos sociales */
+.site-footer a { /* Restringimos este estilo al footer */
+    text-decoration: none; /* Quitar subrayado general de enlaces en el footer */
+}
+.site-footer a:hover, .site-footer a:focus {
+    text-decoration: none; /* También quitar subrayado en hover para enlaces del footer */
+    /* El color del hover específico del icono ya está manejado por .social-icon:hover */
+}
