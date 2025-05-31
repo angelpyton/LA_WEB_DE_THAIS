@@ -221,6 +221,14 @@ button:active, .button:active {
     color: var(--color-text-muted); /* Texto más suave para el footer */
     padding: var(--spacing-m) 0; /* Espaciado vertical usando tus variables */
     text-align: center; /* Centra todo el contenido del footer */
+    border-top: 1px solid #444; /* Añade esta línea */
+}
+
+.site-footer {
+    background-color: var(--color-card-bg); /* Un fondo ligeramente distinto para el footer */
+    color: var(--color-text-muted); /* Texto más suave para el footer */
+    padding: var(--spacing-m) 0; /* Espaciado vertical usando tus variables */
+    text-align: center; /* Centra todo el contenido del footer */
 }
 
 .site-footer .container p {
