@@ -1,37 +1,37 @@
 /* === IMPORTS === */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap'); /* Añadido 700 para el h1 neón */
 
 /* === VARIABLES CSS (CUSTOM PROPERTIES) === */
-/* Esto hace que tu CSS sea más mantenible y consistente */
 :root {
     --font-primary: 'Poppins', sans-serif;
 
     --color-background: #121111;
-    --color-text: #000000; /* Color de texto principal más legible sobre fondo oscuro */
-    --color-text-muted: #a0a0a0; /* Para texto secundario o menos importante */
+    --color-text-body: #e0e0e0; /* Ajustado para mejor legibilidad general sobre fondo oscuro */
+    --color-text-headings: #ffffff; /* Color para encabezados que no son el H1 neón */
+    --color-text-muted: #a0a0a0;
 
-    --color-card-bg: #2a2a2a; /* Un color de tarjeta un poco más oscuro para contraste */
-    --color-primary-accent: #ce8b43; /* Tu naranja/marrón original, lo usaré de acento */
+    --color-card-bg: #2a2a2a;
+    --color-primary-accent: #ce8b43;
     
-    --color-price: #e74c3c; /* Un rojo ligeramente menos saturado, más moderno */
-    --color-button-bg: #e67e22; /* Naranja para botones, armoniza con --color-primary-accent */
+    --color-price: #e74c3c;
+    --color-button-bg: #e67e22;
     --color-button-text: #ffffff;
-    --color-button-hover-bg: #d35400; /* Naranja más oscuro para hover */
+    --color-button-hover-bg: #d35400;
 
-    --border-radius-s: 6px;  /* Pequeño */
-    --border-radius-m: 10px; /* Mediano */
-    --border-radius-l: 15px; /* Grande */
+    --border-radius-s: 6px;
+    --border-radius-m: 10px;
+    --border-radius-l: 15px;
 
     --shadow-soft: 0 4px 8px rgba(0, 0, 0, 0.2);
     --shadow-medium: 0 6px 12px rgba(0, 0, 0, 0.25);
-    --shadow-product-accent: 0px 5px 15px rgba(var(--color-primary-accent-rgb, 206, 139, 67), 0.3); /* Definir --color-primary-accent-rgb si usas color-mix o manualmente */
-    /* Para --color-primary-accent-rgb (si no usas preprocesadores o color-mix): */
-    /* --color-primary-accent-rgb: 206, 139, 67; /* Corresponde a #ce8b43 */
+    /* --shadow-product-accent: 0px 5px 15px rgba(var(--color-primary-accent-rgb, 206, 139, 67), 0.3); */
+    /* --color-primary-accent-rgb: 206, 139, 67; */
 
-    --spacing-xs: 0.5rem;  /* 8px si 1rem = 16px */
-    --spacing-s: 1rem;    /* 16px */
-    --spacing-m: 1.5rem;  /* 24px */
-    --spacing-l: 2rem;    /* 32px */
+    --spacing-xs: 0.5rem;
+    --spacing-s: 1rem;
+    --spacing-m: 1.5rem;
+    --spacing-l: 2rem;
+    --spacing-xl: 3rem; /* Añadido para posible uso con H1 */
 
     --transition-fast: all 0.2s ease-in-out;
     --transition-default: all 0.3s ease-in-out;
@@ -41,42 +41,109 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box; /* Mejora el modelo de caja */
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 html {
-    font-size: 100%; /* Para que 1rem = 16px (o el tamaño por defecto del navegador) */
-    scroll-behavior: smooth; /* Desplazamiento suave */
+    font-size: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
     background-color: var(--color-background);
-    color: var(--color-text);
+    color: var(--color-text-body); /* Usando la variable ajustada para texto de body */
     font-family: var(--font-primary);
-    line-height: 1.6; /* Mejora la legibilidad del texto */
-    -webkit-font-smoothing: antialiased; /* Mejora renderizado de fuentes en Webkit */
-    -moz-osx-font-smoothing: grayscale; /* Mejora renderizado de fuentes en Firefox */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
-    /* Imagen de fondo (combinado desde tus dos declaraciones body) */
     background-image: url('img/fondo.png'); /* Asegúrate de que la ruta sea correcta */
     background-size: cover;
-    background-attachment: fixed; /* Opcional: fija el fondo al hacer scroll */
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 /* === TIPOGRAFÍA === */
-h1, h2, h3, h4, h5, h6 {
+
+/* === TIPOGRAFÍA === */
+
+/* --- ESTILO NEÓN PARA H1 (TÍTULO PRINCIPAL) --- */
+h1 {
+    font-family: var(--font-primary);
+    font-size: clamp(2.8rem, 7vw, 5rem); 
+    font-weight: 700; 
+    line-height: 1.1;
+    text-align: center; 
+    margin-top: var(--spacing-l); 
+    margin-bottom: var(--spacing-xl); 
+    padding: 15px 0; 
+    letter-spacing: 2px;
+
+    color: #fff; 
+    
+    --color-brillo-neon-h1: #fff427; /* Fucsia vibrante (ejemplo) */
+    /* Otros colores que podrías probar para el brillo:
+       --color-brillo-neon-h1: #00ffff; /* Cian eléctrico */
+       /* --color-brillo-neon-h1: #7fff00; /* Lima brillante */
+       /* --color-brillo-neon-h1: #ff8c00; /* Naranja neón */
+    
+
+    text-shadow:
+        0 0 5px #fff,              
+        0 0 10px #fff,             
+        0 0 15px #fff,             
+        0 0 20px var(--color-brillo-neon-h1), 
+        0 0 35px var(--color-brillo-neon-h1), 
+        0 0 45px var(--color-brillo-neon-h1), 
+        0 0 60px var(--color-brillo-neon-h1), 
+        0 0 80px var(--color-brillo-neon-h1); 
+
+    /* Aquí es donde se activa la animación */
+    animation: pulsoNeonH1 3s infinite alternate ease-in-out; 
+}
+
+/* Keyframes para la animación de pulso del H1 */
+@keyframes pulsoNeonH1 {
+    from {
+        text-shadow:
+            0 0 4px #000000,
+            0 0 8px #000000,
+            0 0 12px #fff,
+            0 0 18px var(--color-brillo-neon-h1),
+            0 0 30px var(--color-brillo-neon-h1),
+            0 0 40px var(--color-brillo-neon-h1),
+            0 0 50px var(--color-brillo-neon-h1),
+            0 0 70px var(--color-brillo-neon-h1);
+    }
+    to {
+        text-shadow:
+            0 0 6px #fff,
+            0 0 12px #fff,
+            0 0 18px #fff,
+            0 0 25px var(--color-brillo-neon-h1),
+            0 0 40px var(--color-brillo-neon-h1),
+            0 0 50px var(--color-brillo-neon-h1),
+            0 0 65px var(--color-brillo-neon-h1),
+            0 0 90px var(--color-brillo-neon-h1);
+    }
+}
+
+
+/* --- Estilos para H2, H3, H4, H5, H6 --- */
+h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary); /* Asegurar que usen Poppins */
     font-weight: 600; /* Usar el peso semibold de Poppins */
     line-height: 1.2;
     margin-bottom: var(--spacing-s);
-    --color-text: #ffffff; /* Color de texto para encabezados, blanco para destacar sobre fondo oscuro */
+    color: var(--color-text-headings); /* Color de texto blanco para destacar sobre fondo oscuro */
 }
 
 p {
     margin-bottom: var(--spacing-s);
+    color: var(--color-text-body); /* Asegurar que los párrafos usen el color de texto del body */
 }
 
 a {
@@ -86,17 +153,17 @@ a {
 }
 
 a:hover, a:focus {
-    color: var(--color-button-hover-bg); /* O un tono más claro/oscuro de --color-primary-accent */
+    color: var(--color-button-hover-bg);
     text-decoration: underline;
 }
 
 /* === LAYOUT CONTAINERS === */
-.container { /* Un contenedor general para centrar contenido y dar márgenes */
+.container {
     width: 90%;
-    max-width: 1200px; /* Ajusta según necesites */
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: var(--spacing-l) 0; /* Espaciado vertical */
+    padding: var(--spacing-l) 0;
 }
 
 /* === COMPONENTES === */
@@ -104,21 +171,19 @@ a:hover, a:focus {
 /* --- Banner --- */
 .banner {
     width: 100%;
-    height: 300px; /* Usar height en vez de max-height si quieres que siempre tenga esa altura */
+    height: 300px;
     object-fit: cover;
     border-radius: var(--border-radius-m);
-    margin-bottom: var(--spacing-l); /* Usar variables de espaciado */
-    display: block; /* Para evitar espacios extra debajo si es inline */
+    margin-bottom: var(--spacing-l);
+    display: block;
 }
 
 /* --- Products Grid --- */
 .products {
     display: grid;
-    /* Ajustado minmax para tarjetas un poco más anchas y fluidas */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-m); /* Usar variables de espaciado */
-    padding: var(--spacing-m); /* Padding alrededor del grid */
-    /* text-align: center; No es necesario aquí si los .product ya lo tienen */
+    gap: var(--spacing-m);
+    padding: var(--spacing-m);
 }
 
 /* --- Product Card --- */
@@ -126,152 +191,140 @@ a:hover, a:focus {
     background-color: var(--color-card-bg);
     padding: var(--spacing-m);
     border-radius: var(--border-radius-m);
-    /* Sombra más sutil y con color de acento opcional */
     box-shadow: var(--shadow-soft);
-    /* border: 1px solid #333; Opcional: un borde sutil */
     text-align: center;
     transition: transform var(--transition-default), box-shadow var(--transition-default);
-    display: flex; /* Para mejor control del contenido interno */
-    flex-direction: column; /* Apilar elementos verticalmente */
-    justify-content: space-between; /* Para que el botón quede abajo si las descripciones varían */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product:hover {
-    transform: translateY(-6px) scale(1.02); /* Efecto un poco más pronunciado */
+    transform: translateY(-6px) scale(1.02);
     box-shadow: var(--shadow-medium);
-    /* Si quieres sombra con acento: */
-    /* box-shadow: 0px 8px 20px rgba(206, 139, 67, 0.35); */
 }
 
-.product__image-container { /* Contenedor para la imagen, si necesitas más control */
+.product__image-container {
     margin-bottom: var(--spacing-s);
-    overflow: hidden; /* Para que el hover de la imagen no se salga del border-radius */
-    border-radius: var(--border-radius-s); /* Redondeo para la imagen */
+    overflow: hidden;
+    border-radius: var(--border-radius-s);
 }
 
-.product img { /* Ahora es .product__image */
-    width: 100%; /* Para que la imagen sea responsive dentro de la tarjeta */
-    height: 200px; /* Altura fija para uniformidad, object-fit se encargará del resto */
-    object-fit: cover; /* Asegura que la imagen cubra sin deformarse */
-    display: block; /* Elimina espacio extra debajo de la imagen */
-    border-radius: var(--border-radius-s); /* Hereda o define el mismo que el contenedor */
-    transition: transform var(--transition-default), filter 0.3s ease; /* Añadido filter */
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--border-radius-s);
+    transition: transform var(--transition-default), filter 0.3s ease;
 }
 
-.product:hover img { /* Efecto en la imagen cuando se hace hover en la tarjeta */
+.product:hover img {
     transform: scale(1.05);
-    filter: brightness(1.1); /* Un ligero brillo al hacer hover */
+    filter: brightness(1.1);
 }
 
-.product__title { /* Asumiendo que tendrás un título para el producto */
-    font-size: 1.25rem; /* ~20px */
+.product__title {
+    font-size: 1.25rem;
     font-weight: 600;
-    color: var(--color-text);
+    color: var(--color-text-headings); /* Usar el color de encabezados */
     margin-bottom: var(--spacing-xs);
 }
 
-.product__description { /* Asumiendo que tendrás una descripción */
-    font-size: 0.9rem; /* ~14px */
+.product__description {
+    font-size: 0.9rem;
     color: var(--color-text-muted);
     margin-bottom: var(--spacing-s);
-    flex-grow: 1; /* Para que ocupe el espacio disponible y empuje el precio/botón abajo */
+    flex-grow: 1;
 }
 
 .price {
-    font-size: 1.75rem; /* ~28px, ligeramente ajustado */
-    font-weight: 600; /* Poppins semibold */
+    font-size: 1.75rem;
+    font-weight: 600;
     color: var(--color-price);
-    margin: var(--spacing-xs) 0 var(--spacing-s); /* Espaciado arriba y abajo */
+    margin: var(--spacing-xs) 0 var(--spacing-s);
 }
 
 /* --- Button --- */
-button, .button { /* Añadida clase .button para poder estilizar enlaces como botones */
+button, .button {
     background-color: var(--color-button-bg);
     color: var(--color-button-text);
-    padding: var(--spacing-s) var(--spacing-m); /* Usar variables */
+    padding: var(--spacing-s) var(--spacing-m);
     border: none;
     border-radius: var(--border-radius-s);
     cursor: pointer;
     font-family: var(--font-primary);
-    font-size: 1rem; /* ~16px */
+    font-size: 1rem;
     font-weight: 600;
-    text-transform: uppercase; /* Da un look más "profesional" a los botones */
+    text-transform: uppercase;
     letter-spacing: 0.5px;
-    text-decoration: none; /* Para la clase .button en enlaces */
-    display: inline-block; /* Para que el padding funcione correctamente en enlaces */
+    text-decoration: none;
+    display: inline-block;
     transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 button:hover, .button:hover,
-button:focus, .button:focus { /* Añadido :focus para accesibilidad */
+button:focus, .button:focus {
     background-color: var(--color-button-hover-bg);
-    transform: translateY(-2px) scale(1.03); /* Efecto hover más dinámico */
-    box-shadow: var(--shadow-soft); /* Sombra sutil en hover/focus */
-    outline: none; /* Quitar el outline por defecto si se maneja visualmente el focus */
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: var(--shadow-soft);
+    outline: none;
 }
 
 button:active, .button:active {
-    transform: translateY(0px) scale(0.98); /* Efecto al presionar */
+    transform: translateY(0px) scale(0.98);
     box-shadow: none;
 }
 
 /* === FOOTER STYLES === */
+/* Eliminada la duplicación de .site-footer */
 .site-footer {
-    background-color: var(--color-card-bg); /* Un fondo ligeramente distinto para el footer */
-    color: var(--color-text-muted); /* Texto más suave para el footer */
-    padding: var(--spacing-m) 0; /* Espaciado vertical usando tus variables */
-    text-align: center; /* Centra todo el contenido del footer */
-    border-top: 1px solid #444; /* Añade esta línea */
-}
-
-.site-footer {
-    background-color: var(--color-card-bg); /* Un fondo ligeramente distinto para el footer */
-    color: var(--color-text-muted); /* Texto más suave para el footer */
-    padding: var(--spacing-m) 0; /* Espaciado vertical usando tus variables */
-    text-align: center; /* Centra todo el contenido del footer */
+    background-color: var(--color-card-bg);
+    color: var(--color-text-muted);
+    padding: var(--spacing-m) 0;
+    text-align: center;
+    border-top: 1px solid #444; /* Mantenida esta línea de la primera definición */
 }
 
 .site-footer .container p {
-    margin-bottom: var(--spacing-s); /* Espacio entre párrafos dentro del footer */
-    color: #ffffff; /* Asegurar que el texto del copyright sea visible */
+    margin-bottom: var(--spacing-s);
+    color: var(--color-text-headings); /* Usar el color de encabezados para mejor visibilidad */
 }
 
 .site-footer .container p:last-child {
-    margin-bottom: 0; /* Quitar margen inferior del último párrafo (social-links) */
+    margin-bottom: 0;
 }
 
 .site-footer .social-links {
-    margin-top: var(--spacing-s); /* Espacio encima del texto "Síguenos en:" */
+    margin-top: var(--spacing-s);
     font-size: 0.9em;
-    color: #ffffff; /* Color para el texto "Síguenos en:" */
+    color: var(--color-text-headings); /* Usar el color de encabezados */
 }
 
 .site-footer .social-icon {
-    display: inline-block; /* Permite aplicar transformaciones y mejor control del espaciado */
-    margin: 0 var(--spacing-xs); /* Espacio horizontal alrededor del icono */
+    display: inline-block;
+    margin: 0 var(--spacing-xs);
     transition: transform var(--transition-fast), color var(--transition-fast);
-    color: var(--color-primary-accent); /* Color inicial del icono, usando tu variable de acento */
+    color: var(--color-primary-accent);
 }
 
 .site-footer .social-icon svg {
-    width: 28px;  /* Tamaño del icono SVG */
-    height: 28px; /* Tamaño del icono SVG */
-    vertical-align: middle; /* Alinea el icono correctamente si tienes texto al lado */
-    fill: currentColor; /* El SVG heredará el color del 'a' (social-icon) */
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    fill: currentColor;
 }
 
 .site-footer .social-icon:hover,
 .site-footer .social-icon:focus {
-    color: var(--color-button-hover-bg); /* Color al pasar el mouse, usando tu variable de hover de botón */
-    transform: scale(1.15); /* Un poco más grande al hacer hover */
-    outline: none; /* Quitar el outline por defecto en focus, ya que tenemos el cambio de color/tamaño */
+    color: var(--color-button-hover-bg);
+    transform: scale(1.15);
+    outline: none;
 }
 
-/* Ajuste para que la etiqueta 'a' general no interfiera tanto con los iconos sociales */
-.site-footer a { /* Restringimos este estilo al footer */
-    text-decoration: none; /* Quitar subrayado general de enlaces en el footer */
+.site-footer a {
+    text-decoration: none;
 }
 .site-footer a:hover, .site-footer a:focus {
-    text-decoration: none; /* También quitar subrayado en hover para enlaces del footer */
-    /* El color del hover específico del icono ya está manejado por .social-icon:hover */
+    text-decoration: none;
 }
